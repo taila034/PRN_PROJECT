@@ -1,0 +1,8 @@
+
+PRN_PROJECT/.vs/*
+PRN_PROJECT/BusinessObject/bin/*
+PRN_PROJECT/BusinessObject/obj/*
+PRN_PROJECT/DataAccess/bin/*
+PRN_PROJECT/DataAccess/obj/*
+PRN_PROJECT/SportBooking/bin/*
+PRN_PROJECT/SportBooking/obj/*
