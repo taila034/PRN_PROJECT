@@ -37,16 +37,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(178, 361);
+            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSave.Location = new System.Drawing.Point(85, 359);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(94, 29);
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtName
             // 
@@ -59,7 +62,6 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(178, 198);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(178, 27);
             this.txtPassword.TabIndex = 11;
             // 
@@ -75,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 289);
+            this.label2.Location = new System.Drawing.Point(47, 267);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 20);
             this.label2.TabIndex = 5;
@@ -108,16 +110,27 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(178, 286);
+            this.txtPhone.Location = new System.Drawing.Point(178, 260);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(178, 27);
             this.txtPhone.TabIndex = 10;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(244, 359);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(94, 29);
+            this.btnCancel.TabIndex = 13;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // frmUserDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 412);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtEmail);
@@ -129,6 +142,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmUserDetail";
             this.Text = "frmUserDetail";
+            this.Load += new System.EventHandler(this.frmUserDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,5 +159,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
