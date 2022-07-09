@@ -11,7 +11,7 @@ namespace DataAccess
     {
         private static SportCourtManagementDBContext instance = null;
         private static readonly object instanceLock = new object();
-        public static SportCourtManagementDBContext Instance
+        public static SportCourtManagementDBContext InstanceAccountDAO
         {
             get
             {

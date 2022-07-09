@@ -60,7 +60,7 @@ namespace DataAccess
                 using (var context = new SportCourtManagementDBContext())
                 {
                     context.Courts.Add(court);
-                    context.SaveChanges();
+                   context.SaveChanges();
                 }
             }
             catch (Exception ex)
@@ -68,15 +68,37 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
+        public static Court GetListByID(int p)
+        {
+            var mem = new Court();
+            try
+            {
+                using (var db = new SportCourtManagementDBContext())
+                {
+                    mem = db.Courts.SingleOrDefault(c => c.CourtId == p);
+                    db.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return mem;
+        }
         public static void UpdateCourt(Court court)
         {
             try
             {
-                using (var context = new SportCourtManagementDBContext())
+                if (GetListByID(court.CourtId) != null)
                 {
-                    context.Entry<Court>(court).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                    context.SaveChanges();
+                    using (var context = new SportCourtManagementDBContext())
+                    {
+                        context.Courts.Update(court);
+                        context.SaveChanges();
+                    }
                 }
+                   
             }
             catch (Exception ex)
             {
