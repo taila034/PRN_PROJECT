@@ -75,8 +75,11 @@ namespace SportBooking
             frmOrderDetail frm = new frmOrderDetail()
             {
                 orderInfo = orderInfo,
-                isAdmin = isAdmin
+                isAdmin = isAdmin,
+                isCustomer = isCustomer,
+                isView = true
             };
+            frm.ShowDialog();
 
         }
         private void LoadOrderList()

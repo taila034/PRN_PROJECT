@@ -38,6 +38,11 @@ namespace SportBooking
                 btnUser.Visible = false;
                 btnOrder.Visible = false;
             }
+            else
+            {
+                btnViewOrder.Visible = false;
+                btnCart.Visible = false;
+            }
             
             LoadCourtList();
 
@@ -184,7 +189,11 @@ namespace SportBooking
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            frmOrderManagement frmOrderManagement = new frmOrderManagement();
+            frmOrderManagement frmOrderManagement = new frmOrderManagement()
+            {
+                orderInfo = orderInfo,
+                isAdmin = isAdmin
+            };
             frmOrderManagement.ShowDialog();
         }
 
@@ -241,9 +250,9 @@ namespace SportBooking
             
             frmOrderManagement frm = new frmOrderManagement()
             {
-                isAdmin = isAdmin,
                 isCustomer = isCustomer,
-                AccountInfo = AccountInfo
+                AccountInfo = AccountInfo,
+                orderInfo = orderInfo
             };
             frm.ShowDialog();
         }

@@ -65,7 +65,8 @@ namespace SportBooking
                     AccountInfo = acc,
                     AccountRepository = accountRepository,
                     isCustomer = false,
-                    CourtRepository = courtRepository
+                    CourtRepository = courtRepository,
+                    isAdmin = isAdmin
                 };
                 frmMain.ShowDialog();
 
@@ -77,7 +78,8 @@ namespace SportBooking
                     AccountInfo = acc,
                     AccountRepository = accountRepository,
                     isCustomer = true,
-                    CourtRepository = courtRepository
+                    CourtRepository = courtRepository,
+                    isAdmin = isAdmin
                 };
                 frmMain.ShowDialog();
 

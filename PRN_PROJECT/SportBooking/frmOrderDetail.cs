@@ -25,7 +25,8 @@ namespace SportBooking
         public IOrderRepository orderRepository = new OrderRepository();
         BindingSource source = new BindingSource();
         public bool isAdmin { get; set; }
-
+        public bool isCustomer { get; set; }
+        public bool isView { get; set; }
         private void frmOrderDetail_Load(object sender, EventArgs e)
         {
             
@@ -54,7 +55,7 @@ namespace SportBooking
                 dataGridView1.Columns[2].Visible = false;
                 dataGridView1.Columns[4].Visible = false;
                 dataGridView1.Columns[5].Visible = false;
-                if (isAdmin)
+                if (isAdmin || isView)
                 {
                     btnCheckout.Visible = false;
                     
