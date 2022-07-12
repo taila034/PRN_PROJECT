@@ -14,5 +14,7 @@ namespace DataAccess.Repository
         void UpdateSlot(CourtDetail cd);
         List<CourtDetail> GetCourtDetails();
         CourtDetail GetSlotByCourtId(int id);
+        List<CourtDetail> GetAvailableSlot(int id);
+        CourtDetail GetCourtDetailByCourtDetailsID(int id);
     }
 }

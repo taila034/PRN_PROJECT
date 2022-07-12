@@ -14,5 +14,7 @@ namespace DataAccess.Repository
         void UpdateCourt(Court court);
         List<Court> GetCourts();
         Court GetCourtById(int id);
+        string getCategoryName(int id);
+        List<Category> GetCategories();
     }
 }

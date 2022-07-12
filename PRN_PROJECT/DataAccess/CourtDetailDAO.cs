@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,10 @@ namespace DataAccess
 {
     public class CourtDetailDAO
     {
-        private static SportCourtManagementDBContext instance = null;
+        private static CourtDetailDAO instance = null;
         private static readonly object instanceLock = new object();
-        public static SportCourtManagementDBContext Instance
+        private CourtDetailDAO() { }
+        public static CourtDetailDAO Instance
         {
             get
             {
@@ -19,26 +21,26 @@ namespace DataAccess
                 {
                     if (instance == null)
                     {
-                        instance = new SportCourtManagementDBContext();
+                        instance = new CourtDetailDAO();
                     }
                     return instance;
                 }
             }
         }
-        public static List<CourtDetail> GetCourtDetails()
+        public List<CourtDetail> GetCourtDetails()
         {
             var listCourtDetails = new List<CourtDetail>();
             try
             {
                 using (var db = new SportCourtManagementDBContext())
                 {
-                    listCourtDetails = db.CourtDetails.ToList();
+                    listCourtDetails = db.CourtDetails.Include(p => p.Court).ToList();
                 }
             }
             catch (Exception e) { }
             return listCourtDetails;
         }
-        public static CourtDetail GetCourtDetailByCourtId(int id)
+        public CourtDetail GetCourtDetailByCourtDetailId(int id)
         {
             var cd = new CourtDetail();
             try
@@ -52,7 +54,7 @@ namespace DataAccess
             return cd;
         }
 
-        public static void AddSlot(CourtDetail cd)
+        public void AddSlot(CourtDetail cd)
         {
             try
             {
@@ -67,7 +69,7 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
-        public static void UpdateSlot(CourtDetail cd)
+        public void UpdateSlot(CourtDetail cd)
         {
             try
             {
@@ -82,7 +84,7 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
-        public static void DeleteSlot(CourtDetail cd)
+        public void DeleteSlot(CourtDetail cd)
         {
             try
             {
@@ -98,6 +100,28 @@ namespace DataAccess
                 throw new Exception(e.Message);
             }
         }
+        public List<CourtDetail> GetAvailableSlot(int id)
+        {
+            var slotList = new List<CourtDetail>();
+            try
+            {
+                using (var db = new SportCourtManagementDBContext())
+                {
+                    var items = db.CourtDetails.ToList();
+                    foreach(var slot in items)
+                    {
+                        if(slot.CourtId == id && slot.Status)
+                        {
+                            slotList.Add(slot);
+                        }
+                    }
+                    
+                }
+            }
+            catch (Exception e) { }
+            return slotList;
+        }
+        
 
     }
 }

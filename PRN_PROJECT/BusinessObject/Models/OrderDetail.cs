@@ -10,6 +10,7 @@ namespace BusinessObject.Models
         public int OrderDetailId { get; set; }
         public int OrderId { get; set; }
         public int CourtDetailsId { get; set; }
+        public DateTime OrderDate { get; set; }
 
         public virtual CourtDetail CourtDetails { get; set; }
         public virtual Order Order { get; set; }

@@ -9,10 +9,12 @@ namespace DataAccess.Repository
 {
     public class AccountRepository : IAccountRepository
     {
-        public void DeleteAccount(Account acc) => AccountDAO.DeleteAccount(acc);
-        public void AddAccount(Account acc) => AccountDAO.AddAccount(acc);
-        public void UpdateAccount(Account acc) => AccountDAO.UpdateAccount(acc);
-        public List<Account> GetAccounts() => AccountDAO.GetAccounts();
-        public Account GetAccountById(int id) => AccountDAO.GetAccountById(id);
+        public void AddAccount(Account acc) => AccountDAO.Instance.AddAccount(acc);
+        public void UpdateAccount(Account acc) => AccountDAO.Instance.UpdateAccount(acc);
+        public void DeleteAccount(Account acc) => AccountDAO.Instance.DeleteAccount(acc);
+        public List<Account> GetAccounts() => AccountDAO.Instance.GetAccounts();
+        public Account GetAccountById(int id) => AccountDAO.Instance.GetAccountById(id);
+
+
     }
 }

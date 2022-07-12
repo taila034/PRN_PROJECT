@@ -10,9 +10,10 @@ namespace DataAccess
 {
     public class CourtDAO
     {
-        private static SportCourtManagementDBContext instance = null;
+        private static CourtDAO instance = null;
         private static readonly object instanceLock = new object();
-        public static SportCourtManagementDBContext Instance
+        private CourtDAO() { }
+        public static CourtDAO Instance
         {
             get
             {
@@ -20,13 +21,13 @@ namespace DataAccess
                 {
                     if (instance == null)
                     {
-                        instance = new SportCourtManagementDBContext();
+                        instance = new CourtDAO();
                     }
                     return instance;
                 }
             }
         }
-        public static List<Court> GetCourts()
+        public List<Court> GetCourts()
         {
             var listCourts = new List<Court>();
             try
@@ -39,7 +40,7 @@ namespace DataAccess
             catch (Exception e) { }
             return listCourts;
         }
-        public static Court GetCourtById(int id)
+        public Court GetCourtById(int id)
         {
             var court = new Court();
             try
@@ -53,7 +54,7 @@ namespace DataAccess
             return court;
         }
 
-        public static void AddCourt(Court court)
+        public void AddCourt(Court court)
         {
             try
             {
@@ -68,7 +69,7 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
-        public static void UpdateCourt(Court court)
+        public void UpdateCourt(Court court)
         {
             try
             {
@@ -83,7 +84,7 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
-        public static void DeleteCourt(Court court)
+        public void DeleteCourt(Court court)
         {
             try
             {
@@ -99,6 +100,35 @@ namespace DataAccess
                 throw new Exception(e.Message);
             }
         }
+        public string getCategoryName(int id)
+        {
+            var category = new Category();
+            try
+            {
+                using (var db = new SportCourtManagementDBContext())
+                {
+                    category = db.Categories.Find(id);
+                }
+            }
+            catch (Exception e) { }
+            return category.CategoryName;
+        }
+        public List<Category> getCategories()
+        {
+            var category = new List<Category>();
+            {
+                try
+                {
+                    using (var db = new SportCourtManagementDBContext())
+                    {
+                        category = db.Categories.ToList();
+                    }
+                }
+                catch (Exception e) { }
+                return category;
+                }
+            }
+        }
 
     }
-}
+

@@ -47,12 +47,13 @@
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnOrder = new System.Windows.Forms.Button();
+            this.btnCart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCourtList)).BeginInit();
             this.SuspendLayout();
             // 
             // btnViewProfile
             // 
-            this.btnViewProfile.Location = new System.Drawing.Point(653, 210);
+            this.btnViewProfile.Location = new System.Drawing.Point(653, 123);
             this.btnViewProfile.Name = "btnViewProfile";
             this.btnViewProfile.Size = new System.Drawing.Size(148, 29);
             this.btnViewProfile.TabIndex = 0;
@@ -62,7 +63,7 @@
             // 
             // btnCourt
             // 
-            this.btnCourt.Location = new System.Drawing.Point(653, 310);
+            this.btnCourt.Location = new System.Drawing.Point(653, 266);
             this.btnCourt.Name = "btnCourt";
             this.btnCourt.Size = new System.Drawing.Size(148, 29);
             this.btnCourt.TabIndex = 0;
@@ -72,7 +73,7 @@
             // 
             // btnSlot
             // 
-            this.btnSlot.Location = new System.Drawing.Point(653, 367);
+            this.btnSlot.Location = new System.Drawing.Point(653, 319);
             this.btnSlot.Name = "btnSlot";
             this.btnSlot.Size = new System.Drawing.Size(148, 29);
             this.btnSlot.TabIndex = 0;
@@ -82,7 +83,7 @@
             // 
             // btnUser
             // 
-            this.btnUser.Location = new System.Drawing.Point(653, 423);
+            this.btnUser.Location = new System.Drawing.Point(653, 374);
             this.btnUser.Name = "btnUser";
             this.btnUser.Size = new System.Drawing.Size(148, 29);
             this.btnUser.TabIndex = 0;
@@ -92,12 +93,13 @@
             // 
             // btnViewOrder
             // 
-            this.btnViewOrder.Location = new System.Drawing.Point(653, 261);
+            this.btnViewOrder.Location = new System.Drawing.Point(653, 165);
             this.btnViewOrder.Name = "btnViewOrder";
             this.btnViewOrder.Size = new System.Drawing.Size(148, 29);
             this.btnViewOrder.TabIndex = 0;
             this.btnViewOrder.Text = "View Orders";
             this.btnViewOrder.UseVisualStyleBackColor = true;
+            this.btnViewOrder.Click += new System.EventHandler(this.btnViewOrder_Click);
             // 
             // dgvCourtList
             // 
@@ -108,6 +110,7 @@
             this.dgvCourtList.RowTemplate.Height = 29;
             this.dgvCourtList.Size = new System.Drawing.Size(614, 311);
             this.dgvCourtList.TabIndex = 1;
+            this.dgvCourtList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCourtList_CellDoubleClick);
             // 
             // label1
             // 
@@ -157,6 +160,7 @@
             // 
             // txtCourtID
             // 
+            this.txtCourtID.Enabled = false;
             this.txtCourtID.Location = new System.Drawing.Point(82, 83);
             this.txtCourtID.Name = "txtCourtID";
             this.txtCourtID.Size = new System.Drawing.Size(125, 27);
@@ -164,6 +168,7 @@
             // 
             // txtCourtName
             // 
+            this.txtCourtName.Enabled = false;
             this.txtCourtName.Location = new System.Drawing.Point(327, 81);
             this.txtCourtName.Name = "txtCourtName";
             this.txtCourtName.Size = new System.Drawing.Size(256, 27);
@@ -171,6 +176,7 @@
             // 
             // txtPrice
             // 
+            this.txtPrice.Enabled = false;
             this.txtPrice.Location = new System.Drawing.Point(82, 129);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(125, 27);
@@ -178,6 +184,7 @@
             // 
             // txtCategory
             // 
+            this.txtCategory.Enabled = false;
             this.txtCategory.Location = new System.Drawing.Point(327, 132);
             this.txtCategory.Name = "txtCategory";
             this.txtCategory.Size = new System.Drawing.Size(256, 27);
@@ -219,7 +226,7 @@
             // 
             // btnOrder
             // 
-            this.btnOrder.Location = new System.Drawing.Point(653, 478);
+            this.btnOrder.Location = new System.Drawing.Point(653, 429);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(148, 29);
             this.btnOrder.TabIndex = 7;
@@ -227,11 +234,22 @@
             this.btnOrder.UseVisualStyleBackColor = true;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
+            // btnCart
+            // 
+            this.btnCart.Location = new System.Drawing.Point(653, 79);
+            this.btnCart.Name = "btnCart";
+            this.btnCart.Size = new System.Drawing.Size(148, 29);
+            this.btnCart.TabIndex = 8;
+            this.btnCart.Text = "Check Cart";
+            this.btnCart.UseVisualStyleBackColor = true;
+            this.btnCart.Click += new System.EventHandler(this.btnCart_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(822, 592);
+            this.Controls.Add(this.btnCart);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.cbCategory);
@@ -281,5 +299,6 @@
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnOrder;
+        private System.Windows.Forms.Button btnCart;
     }
 }

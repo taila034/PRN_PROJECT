@@ -121,6 +121,9 @@ namespace BusinessObject.Models
                 entity.Property(e => e.CourtDetailsId).HasColumnName("CourtDetailsID");
 
                 entity.Property(e => e.CourtId).HasColumnName("CourtID");
+                entity.Property(e => e.Slot)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.HasOne(d => d.Court)
                     .WithMany(p => p.CourtDetails)
@@ -158,6 +161,8 @@ namespace BusinessObject.Models
                     .HasName("PK_OrderDetail");
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
+
+                entity.Property(e => e.OrderDate).HasColumnType("date");
 
                 entity.Property(e => e.CourtDetailsId).HasColumnName("CourtDetailsID");
 

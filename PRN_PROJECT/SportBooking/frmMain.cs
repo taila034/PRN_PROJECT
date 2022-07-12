@@ -20,9 +20,14 @@ namespace SportBooking
         }
         public IAccountRepository AccountRepository { get; set; }
         public ICourtRepository CourtRepository { get; set; }
+        //public ICourtDetailRepository CourtDetailRepository { get; set; }
+        public Order orderInfo = new Order() {};
+        
         public bool isCustomer { get; set; }
         public Account AccountInfo { get; set; }
+        
         BindingSource source = new BindingSource();
+        public bool isAdmin { get; set; }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -33,6 +38,7 @@ namespace SportBooking
                 btnUser.Visible = false;
                 btnOrder.Visible = false;
             }
+            
             LoadCourtList();
 
         }
@@ -180,6 +186,66 @@ namespace SportBooking
         {
             frmOrderManagement frmOrderManagement = new frmOrderManagement();
             frmOrderManagement.ShowDialog();
+        }
+
+        private void dgvCourtList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmBooking frm = new frmBooking()
+            {
+                CourtInfo = CourtRepository.GetCourtById(int.Parse(txtCourtID.Text)),
+                orderInfo = orderInfo,
+                CourtRepository = CourtRepository,
+                AccountInfo = AccountInfo
+            };
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadCourtList();
+                orderInfo.OrderId = frm.orderInfo.OrderId;
+                orderInfo.Status = frm.orderInfo.Status;
+                orderInfo.TotalPrice = frm.orderInfo.TotalPrice;
+            }
+            
+        }
+
+        private void btnCart_Click(object sender, EventArgs e)
+        {
+            if (orderInfo.OrderId == 0 || orderInfo.Status.Equals("Confirmed"))
+            {
+                MessageBox.Show("There is nothing in your cart");
+            }
+            else
+            {
+                frmOrderDetail frm = new frmOrderDetail()
+                {
+                    orderInfo = orderInfo,
+
+                };
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    LoadCourtList();
+                    orderInfo = frm.orderInfo;
+                    //set status to checkout
+                }
+                else
+                {
+                    orderInfo = frm.orderInfo;
+                }
+
+
+
+            }
+        }
+
+        private void btnViewOrder_Click(object sender, EventArgs e)
+        {
+            
+            frmOrderManagement frm = new frmOrderManagement()
+            {
+                isAdmin = isAdmin,
+                isCustomer = isCustomer,
+                AccountInfo = AccountInfo
+            };
+            frm.ShowDialog();
         }
     }
 }

@@ -28,31 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCourtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtSportName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbSlot = new System.Windows.Forms.ComboBox();
             this.btnBook = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.SuspendLayout();
             // 
-            // monthCalendar1
+            // txtCourtName
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(27, 18);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(457, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(205, 27);
-            this.textBox1.TabIndex = 1;
+            this.txtCourtName.Enabled = false;
+            this.txtCourtName.Location = new System.Drawing.Point(457, 23);
+            this.txtCourtName.Name = "txtCourtName";
+            this.txtCourtName.Size = new System.Drawing.Size(205, 27);
+            this.txtCourtName.TabIndex = 1;
             // 
             // label1
             // 
@@ -72,12 +67,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Sport name";
             // 
-            // textBox2
+            // txtSportName
             // 
-            this.textBox2.Location = new System.Drawing.Point(457, 76);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(205, 27);
-            this.textBox2.TabIndex = 1;
+            this.txtSportName.Enabled = false;
+            this.txtSportName.Location = new System.Drawing.Point(457, 76);
+            this.txtSportName.Name = "txtSportName";
+            this.txtSportName.Size = new System.Drawing.Size(205, 27);
+            this.txtSportName.TabIndex = 1;
             // 
             // label3
             // 
@@ -88,12 +84,13 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Price";
             // 
-            // textBox3
+            // txtPrice
             // 
-            this.textBox3.Location = new System.Drawing.Point(457, 134);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(205, 27);
-            this.textBox3.TabIndex = 1;
+            this.txtPrice.Enabled = false;
+            this.txtPrice.Location = new System.Drawing.Point(457, 134);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(205, 27);
+            this.txtPrice.TabIndex = 1;
             // 
             // label4
             // 
@@ -104,22 +101,24 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Available Slot";
             // 
-            // comboBox1
+            // cbSlot
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(457, 187);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(205, 28);
-            this.comboBox1.TabIndex = 3;
+            this.cbSlot.FormattingEnabled = true;
+            this.cbSlot.Location = new System.Drawing.Point(457, 187);
+            this.cbSlot.Name = "cbSlot";
+            this.cbSlot.Size = new System.Drawing.Size(205, 28);
+            this.cbSlot.TabIndex = 3;
             // 
             // btnBook
             // 
+            this.btnBook.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnBook.Location = new System.Drawing.Point(162, 295);
             this.btnBook.Name = "btnBook";
             this.btnBook.Size = new System.Drawing.Size(94, 29);
             this.btnBook.TabIndex = 4;
             this.btnBook.Text = "Book";
             this.btnBook.UseVisualStyleBackColor = true;
+            this.btnBook.Click += new System.EventHandler(this.btnBook_Click);
             // 
             // btnCancel
             // 
@@ -131,41 +130,47 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(31, 23);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 5;
+            // 
             // frmBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 372);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnBook);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbSlot);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.txtSportName);
+            this.Controls.Add(this.txtCourtName);
             this.Name = "frmBooking";
             this.Text = "frmBooking";
+            this.Load += new System.EventHandler(this.frmBooking_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCourtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtSportName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbSlot;
         private System.Windows.Forms.Button btnBook;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }

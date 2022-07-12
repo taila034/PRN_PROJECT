@@ -9,9 +9,10 @@ namespace DataAccess
 {
     public class AccountDAO
     {
-        private static SportCourtManagementDBContext instance = null;
+        private static AccountDAO instance = null;
         private static readonly object instanceLock = new object();
-        public static SportCourtManagementDBContext Instance
+        private AccountDAO() { }
+        public static AccountDAO Instance
         {
             get
             {
@@ -19,13 +20,13 @@ namespace DataAccess
                 {
                     if (instance == null)
                     {
-                        instance = new SportCourtManagementDBContext();
+                        instance = new AccountDAO();
                     }
                     return instance;
                 }
             }
         }
-        public static List<Account> GetAccounts()
+        public List<Account> GetAccounts()
         {
             var listAccounts = new List<Account>();
             try
@@ -38,7 +39,7 @@ namespace DataAccess
             catch (Exception e) { }
             return listAccounts;
         }
-        public static Account GetAccountById(int id)
+        public Account GetAccountById(int id)
         {
             var account = new Account();
             try
@@ -52,7 +53,7 @@ namespace DataAccess
             return account;
         }
 
-        public static void AddAccount(Account acc)
+        public void AddAccount(Account acc)
         {
             try
             {
@@ -67,7 +68,7 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
-        public static void UpdateAccount(Account acc)
+        public void UpdateAccount(Account acc)
         {
             try
             {
@@ -82,7 +83,7 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
-        public static void DeleteAccount(Account acc)
+        public void DeleteAccount(Account acc)
         {
             try
             {

@@ -9,10 +9,13 @@ namespace DataAccess.Repository
 {
     public class CourtRepository : ICourtRepository
     {
-        public void DeleteCourt(Court court) => CourtDAO.DeleteCourt(court);
-        public void AddCourt(Court court) => CourtDAO.AddCourt(court);
-        public void UpdateCourt(Court court) => CourtDAO.UpdateCourt(court);
-        public List<Court> GetCourts() => CourtDAO.GetCourts();
-        public Court GetCourtById(int id) => CourtDAO.GetCourtById(id);
+        public void DeleteCourt(Court court) => CourtDAO.Instance.DeleteCourt(court);
+        public void AddCourt(Court court) => CourtDAO.Instance.AddCourt(court);
+        public void UpdateCourt(Court court) => CourtDAO.Instance.UpdateCourt(court);
+        public List<Court> GetCourts() => CourtDAO.Instance.GetCourts();
+        public Court GetCourtById(int id) => CourtDAO.Instance.GetCourtById(id);
+        public string getCategoryName(int id) => CourtDAO.Instance.getCategoryName(id);
+        public List<Category> GetCategories() => CourtDAO.Instance.getCategories();
     }
 }
+

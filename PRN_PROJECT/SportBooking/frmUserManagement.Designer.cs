@@ -60,6 +60,7 @@
             // 
             // txtPassword
             // 
+            this.txtPassword.Enabled = false;
             this.txtPassword.Location = new System.Drawing.Point(510, 91);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(185, 27);
@@ -67,6 +68,7 @@
             // 
             // txtPhone
             // 
+            this.txtPhone.Enabled = false;
             this.txtPhone.Location = new System.Drawing.Point(510, 37);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(185, 27);
@@ -74,6 +76,7 @@
             // 
             // txtName
             // 
+            this.txtName.Enabled = false;
             this.txtName.Location = new System.Drawing.Point(122, 34);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(237, 27);
@@ -81,6 +84,7 @@
             // 
             // txtEmail
             // 
+            this.txtEmail.Enabled = false;
             this.txtEmail.Location = new System.Drawing.Point(122, 91);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(237, 27);
@@ -132,6 +136,7 @@
             this.dgvAccount.RowTemplate.Height = 29;
             this.dgvAccount.Size = new System.Drawing.Size(789, 212);
             this.dgvAccount.TabIndex = 11;
+            this.dgvAccount.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAccount_CellDoubleClick);
             // 
             // label5
             // 
@@ -174,9 +179,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 20);
+            this.label1.Size = new System.Drawing.Size(49, 20);
             this.label1.TabIndex = 10;
-            this.label1.Text = "User name";
+            this.label1.Text = "Name";
             // 
             // label6
             // 
@@ -189,6 +194,7 @@
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(794, 57);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(125, 27);

@@ -17,10 +17,15 @@ namespace BusinessObject.Models
 
        
         public int AccountId { get; set; }
+        [Required]
         public string AccountName { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string Phone { get; set; }
+
         public string Role { get; set; }
+        [Required]
         public string Password { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }

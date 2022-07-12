@@ -158,10 +158,11 @@ namespace SportBooking
                     var account = GetAccount();
                     AccountRepository.DeleteAccount(account);
                     LoadAccountList();
+                    MessageBox.Show("Deleted successfully!", "Account Management - Delete an account", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Delete an account");
+                    MessageBox.Show("Cannot delete this user because of some related data", "Account Management - Delete an account", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -185,6 +186,22 @@ namespace SportBooking
                 MessageBox.Show(ex.Message, "Get member");
             }
             return acc;
+        }
+
+        private void dgvAccount_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmUserDetail frm = new frmUserDetail()
+            {
+                Text = "Update account",
+                isUpdate = true,
+                AccountEditInfo = GetAccount(),
+                AccountRepository = AccountRepository
+            };
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadAccountList();
+                source.Position = source.Count - 1;
+            }
         }
     }
 }

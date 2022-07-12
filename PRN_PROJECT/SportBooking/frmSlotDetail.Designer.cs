@@ -30,40 +30,35 @@
         {
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.Status = new System.Windows.Forms.Label();
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.mskStart = new System.Windows.Forms.MaskedTextBox();
+            this.mskEnd = new System.Windows.Forms.MaskedTextBox();
+            this.cbCourtID = new System.Windows.Forms.ComboBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSave
             // 
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSave.Location = new System.Drawing.Point(124, 270);
+            this.btnSave.Location = new System.Drawing.Point(72, 285);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(94, 29);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(28, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 20);
+            this.label1.Size = new System.Drawing.Size(60, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Court name";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(145, 23);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(151, 27);
-            this.txtName.TabIndex = 2;
+            this.label1.Text = "CourtID";
             // 
             // Status
             // 
@@ -77,6 +72,9 @@
             // cbStatus
             // 
             this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Items.AddRange(new object[] {
+            "True",
+            "False"});
             this.cbStatus.Location = new System.Drawing.Point(145, 203);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(151, 28);
@@ -100,31 +98,50 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Start at";
             // 
-            // maskedTextBox1
+            // mskStart
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(145, 91);
-            this.maskedTextBox1.Mask = "00:00:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(125, 27);
-            this.maskedTextBox1.TabIndex = 4;
+            this.mskStart.Location = new System.Drawing.Point(145, 91);
+            this.mskStart.Mask = "00:00:00";
+            this.mskStart.Name = "mskStart";
+            this.mskStart.Size = new System.Drawing.Size(125, 27);
+            this.mskStart.TabIndex = 4;
             // 
-            // maskedTextBox2
+            // mskEnd
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(145, 147);
-            this.maskedTextBox2.Mask = "00:00:00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(125, 27);
-            this.maskedTextBox2.TabIndex = 4;
+            this.mskEnd.Location = new System.Drawing.Point(145, 147);
+            this.mskEnd.Mask = "00:00:00";
+            this.mskEnd.Name = "mskEnd";
+            this.mskEnd.Size = new System.Drawing.Size(125, 27);
+            this.mskEnd.TabIndex = 4;
+            // 
+            // cbCourtID
+            // 
+            this.cbCourtID.FormattingEnabled = true;
+            this.cbCourtID.Location = new System.Drawing.Point(145, 27);
+            this.cbCourtID.Name = "cbCourtID";
+            this.cbCourtID.Size = new System.Drawing.Size(230, 28);
+            this.cbCourtID.TabIndex = 5;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(221, 285);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(94, 29);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // frmSlotDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 315);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.maskedTextBox1);
+            this.ClientSize = new System.Drawing.Size(389, 366);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.cbCourtID);
+            this.Controls.Add(this.mskEnd);
+            this.Controls.Add(this.mskStart);
             this.Controls.Add(this.cbStatus);
-            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Status);
@@ -132,6 +149,7 @@
             this.Controls.Add(this.btnSave);
             this.Name = "frmSlotDetail";
             this.Text = "Slot Detail";
+            this.Load += new System.EventHandler(this.frmSlotDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,12 +159,13 @@
 
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label Status;
         private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox mskStart;
+        private System.Windows.Forms.MaskedTextBox mskEnd;
+        private System.Windows.Forms.ComboBox cbCourtID;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
